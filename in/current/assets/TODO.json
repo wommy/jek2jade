@@ -1,0 +1,20 @@
+// TODO
+{
+  'unorganized' : {
+    1:'-var=title IN config.jade && /includes/head.jade'
+  },
+  'organized' : [
+    'future': {
+
+    },
+    'present': {
+
+    },
+    'imperfect': {
+
+    },
+    'past': {
+
+    }
+  ]
+}

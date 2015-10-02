@@ -1,0 +1,17 @@
+//- var page author meta = false
+
+extends ./default.jade
+
+.post
+  header.post-header
+    h1.post-title
+      //- {{ page.title }}
+  if page
+    p.post-meta
+      //- {{ page.date | date: "%b %-d, %Y" }}
+      if page.author
+        //- • {{ page.author }}
+      if page.meta
+        //- • {{ page.meta }}
+  article.post-content
+    block content
