@@ -1,26 +1,31 @@
+//- -
+//-   //- TODO
+//-   {
+//-     'unorganized' : [
+//-       'config.jade',
+//-       '-var=title IN config.jade && /includes/head.jade',
+//-       'mixin 4 todo span-item',
+//-       'title mixin',
+//-       '? include todo.json',
+//-       ''
+//-     ],
+//-     'organized' : [
+//-       'future': {
 
--
-  //- TODO
-  {
-    'unorganized' : [
-      '-var=title IN config.jade && /includes/head.jade',
-      'mixin 4 todo span-item'
-    ],
-    'organized' : [
-      'future': {
+//-       },
+//-       'present': {
 
-      },
-      'present': {
+//-       },
+//-       'imperfect': {
 
-      },
-      'imperfect': {
+//-       },
+//-       'past': {
 
-      },
-      'past': {
+//-       }
+//-     ]
+//-   }
 
-      }
-    ]
-  }
+
 
 
 extends ./assets/templates/default.jade
@@ -29,14 +34,38 @@ block title
   title TODO Index
 
 block content
-  .home
-    h1.page-heading TODO 
-    //- p.rss-subscribe - subscribe 
-    //-   a(href='{{ "/feed.xml" | prepend: site.baseurl }}') via RSS
-    ul.post-list
+  -
+    unorganized = [
+      'config.jade',
+      '-var=title IN config.jade && /includes/head.jade',
+      'mixin 4 todo span-item',
+      'title mixin',
+      '? include todo.json'
+    ]
 
-      //- {% for post in site.posts %}
-      //- li
-      //-   span.post-meta {{ post.date | date: "%b %-d, %Y" }}
-      //-   h2: a.post-link(href='{{ post.url | prepend: site.baseurl }}') {{ post.title }}
-      //- {% endfor %}
+  h1.page-heading TODO Index
+
+  h2 unorganized
+
+  mixin todo--item(title)
+    label
+      input(type='checkbox')
+      span= title
+  
+  ol
+    each title in unorganized
+      li 
+        +todo--item(title)
+      br
+
+  //- .home
+  //-   h1.page-heading TODO 
+  //-   //- p.rss-subscribe - subscribe 
+  //-   //-   a(href='{{ "/feed.xml" | prepend: site.baseurl }}') via RSS
+  //-   ul.post-list
+
+  //-     //- {% for post in site.posts %}
+  //-     //- li
+  //-     //-   span.post-meta {{ post.date | date: "%b %-d, %Y" }}
+  //-     //-   h2: a.post-link(href='{{ post.url | prepend: site.baseurl }}') {{ post.title }}
+  //-     //- {% endfor %}
