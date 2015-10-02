@@ -1,16 +1,15 @@
 extends ./assets/templates/default.jade
 
 block title
-  title Blog Index
+  title technomad Index
 
 block content
-  .home
-    h1.page-heading Posts 
-    p.rss-subscribe - subscribe 
-      a(href='{{ "/feed.xml" | prepend: site.baseurl }}') via RSS
-    ul.post-list
-      //- {% for post in site.posts %}
-      //- li
-      //-   span.post-meta {{ post.date | date: "%b %-d, %Y" }}
-      //-   h2: a.post-link(href='{{ post.url | prepend: site.baseurl }}') {{ post.title }}
-      //- {% endfor %}
+  h1.page-heading techNomad home 
+  //- p.rss-subscribe - subscribe 
+  //-   a(href='{{ "/feed.xml" | prepend: site.baseurl }}') via RSS
+  //- ul.post-list
+    //- {% for post in site.posts %}
+    //- li
+    //-   span.post-meta {{ post.date | date: "%b %-d, %Y" }}
+    //-   h2: a.post-link(href='{{ post.url | prepend: site.baseurl }}') {{ post.title }}
+    //- {% endfor %}

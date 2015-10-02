@@ -1,12 +1,25 @@
-//- - var page.title = false
+- pages = ['index','blog','todo']
 
-header.site-header
-  .wrapper
-    a.site-title(href='/')
-      //- {{ site.title }}
-    nav.site-nav
-      //- {% for page in site.pages %}
-      //-   if page.title
-      //-     a.page-link(href='{{ page.url }}')
-      //-       {{ page.title }}
-      //- {% endfor %}
+mixin nav__links(pages)
+  nav
+    each page in pages
+      a(href='./'+page+'.html')= page
+
+    //- each page in pages
+    //-   if page = home
+    //-     a(href='./index.html')= page  
+    //-   else
+    //-     a(href='./'+page+'.html')= page
+
++nav__links(pages)
+
+//- header.site-header
+//-   .wrapper
+//-     a.site-title(href='/')
+//-       //- {{ site.title }}
+//-     nav.site-nav
+//-       //- {% for page in site.pages %}
+//-       //-   if page.title
+//-       //-     a.page-link(href='{{ page.url }}')
+//-       //-       {{ page.title }}
+//-       //- {% endfor %}
