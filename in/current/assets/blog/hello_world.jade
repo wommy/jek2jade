@@ -1,0 +1,22 @@
+extends ../jade/templates/default.jade
+
+block title
+  title= title
+
+block content
+  - var title = 'hello world'
+  - var author = 'jeff'
+  - var date = '6/19/2013'
+
+
+  h1 hello world
+
+  hr
+  span.
+    date 
+  span.
+    author 
+  hr
+
+  p.
+    hello world, this is my first markdown post! **whoo hoo!**

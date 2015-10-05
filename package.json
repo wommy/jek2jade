@@ -1,6 +1,6 @@
 {
   "name": "jek2jade",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "converting jekyll files to jade",
   "main": "index.js",
   "scripts": {
@@ -14,7 +14,9 @@
   "author": "wommy",
   "license": "ISC",
   "devDependencies": {
+    "browser-sync": "^2.9.8",
     "gulp": "^3.9.0",
-    "gulp-jade": "^1.1.0"
+    "gulp-jade": "^1.1.0",
+    "gulp-sass": "^2.0.4"
   }
 }

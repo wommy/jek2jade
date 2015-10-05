@@ -1,16 +1,39 @@
-extends ./assets/templates/default.jade
+extends ./assets/jade/templates/default.jade
 
 block title
   title Blog Index
 
 block content
-  .home
-    h1.page-heading Posts 
-    p.rss-subscribe - subscribe 
-      a(href='{{ "/feed.xml" | prepend: site.baseurl }}') via RSS
-    ul.post-list
+  //- .home
+  //-   h1.page-heading Posts 
+  //-   p.rss-subscribe - subscribe 
+  //-     a(href='{{ "/feed.xml" | prepend: site.baseurl }}') via RSS
+  //-   ul.post-list
       //- {% for post in site.posts %}
       //- li
       //-   span.post-meta {{ post.date | date: "%b %-d, %Y" }}
       //-   h2: a.post-link(href='{{ post.url | prepend: site.baseurl }}') {{ post.title }}
       //- {% endfor %}
+
+  -
+    blogList = [
+      'hello_world',
+      'my first blog post',
+      'wrote some more shit',
+      'im such a shitty writer',
+      'i should just quit while im ahead',
+      'im such a failure'
+    ]
+
+  h1.page-heading Blog Index
+
+  h2 list of my blog posts
+
+  mixin blog--item(title)
+    a(href='./assets/blog/'+title+'.html')= title
+  
+  ol
+    each title in blogList
+      li 
+        +blog--item(title)
+      br
