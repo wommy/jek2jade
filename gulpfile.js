@@ -3,18 +3,33 @@ var jade = require('gulp-jade');
 var browserSync = require('browser-sync');
 var reload = browserSync.reload;
 var sass = require('gulp-sass');
+var data = require('gulp-data');
+// var markdown = require('gulp-markdown');
 
 // rune this task by typing in  gulp jade  in CLI
 gulp.task('jade', function() {
   return gulp.src('in/current/**/*.jade')
+    // .pipe(data(function(){
+    //   return require('/config.json');
+    // }))
     .pipe(jade({
-       pretty: true
+      pretty: true,
+      data: {
+        "name": "Bob"
+      }
     })) // pipe to jade plugin
-    .pipe(gulp.dest('out')) // tells gulp our output folder
+    .pipe(gulp.dest('out'))// tells gulp our output folder
 });
+
+// gulp.task('md', function () {
+//     return gulp.src('in/current/**/*.md')
+//         .pipe(markdown())
+//         .pipe(gulp.dest('out'));
+// });
 
 // create a task that ensures the `js` task is complete before reloading browsers
 gulp.task('jade-watch', ['jade'], reload);
+// gulp.task('md-watch', ['md'], reload);
 
 gulp.task('sass', function(){
   return gulp.src('./in/current/assets/scss/*.scss')
@@ -28,4 +43,5 @@ gulp.task('serve', ['jade', 'sass'], function() {
 
   gulp.watch('./in/current/assets/scss/*.scss', ['sass']);
   gulp.watch("./in/current/**/*.jade", ['jade-watch']);
+  // gulp.watch("./in/current/**/*.md", ['md-watch']);
 });

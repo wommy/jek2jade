@@ -1,11 +1,11 @@
-- pages = ['index','blog','todo']
+- pages = ['index','blog','todo','about','contact']
 
 mixin nav__links(pages)
   nav
     each page in pages
       a(href='./'+page+'.html')= page
-      br
-      br
+      //- br
+      //- br
     
     //- - var i = 0
     //- while i < pages.length
@@ -20,7 +20,7 @@ mixin nav__links(pages)
 
 +nav__links(pages)
 
-include ./hr.jade
+//- include ./hr.jade
 
 //- header.site-header
 //-   .wrapper

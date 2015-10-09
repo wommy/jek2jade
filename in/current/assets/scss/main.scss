@@ -1,3 +1,44 @@
 body{
   font-family: sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100vh;
+  margin: 0;
+  padding: .5rem;
+  box-sizing: border-box;
+  line-height: 1.5rem; // TODO finalize
+}
+
+nav{
+  display: flex;
+  justify-content: space-around;
+  border-bottom: 1px solid black;
+}
+
+nav a{
+  text-decoration: none;
+
+  &:hover{
+    text-decoration: underline;
+  }
+}
+
+.wrapper{
+  flex: 1;
+  overflow: scroll;
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  align-self: center;
+}
+
+  p p{
+    margin-left: 1rem;
+  }
+
+footer{
+  border-top: 1px solid black;
+  display: flex;
+  justify-content: flex-end;
 }
