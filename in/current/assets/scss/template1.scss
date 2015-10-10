@@ -1,0 +1,26 @@
+body{
+  justify-content: space-between;
+
+  padding: .5rem;
+}
+
+nav{
+  justify-content: space-around;
+  border-bottom: 1px solid black;
+}
+
+.wrapper{
+  flex: 1;
+  overflow: scroll;
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  align-self: center;
+}
+
+footer{
+  display: flex;
+  justify-content: flex-end;
+
+  border-top: 1px solid black;
+}

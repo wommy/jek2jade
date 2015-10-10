@@ -1,44 +1,14 @@
-body{
-  font-family: sans-serif;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 100vh;
-  margin: 0;
-  padding: .5rem;
-  box-sizing: border-box;
-  line-height: 1.5rem; // TODO finalize
-}
 
-nav{
-  display: flex;
-  justify-content: space-around;
-  border-bottom: 1px solid black;
-}
+// "Reset" styles and SCSS reusable components
+@import "normalize";
+// @import "mixins";
+// @import "variables";
 
-nav a{
-  text-decoration: none;
+// Generic site base & layout styles
+@import "wommy-base";
+// @import "layout";
 
-  &:hover{
-    text-decoration: underline;
-  }
-}
-
-.wrapper{
-  flex: 1;
-  overflow: scroll;
-  display: flex;
-  flex-direction: column;
-  width: 80%;
-  align-self: center;
-}
-
-  p p{
-    margin-left: 1rem;
-  }
-
-footer{
-  border-top: 1px solid black;
-  display: flex;
-  justify-content: flex-end;
-}
+// Layouts
+// @import "home";
+// @import "template1";
+@import "template2";
