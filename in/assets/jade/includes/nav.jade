@@ -1,4 +1,4 @@
-- pages = ['home','blog','todo','about','contact']
+- pages = ['home','blog','todo','about','resume']
 
 
 - contact = ['email','phone']
@@ -19,11 +19,11 @@
   ]
 -
   contactArrPlus = [
-    ['email','mailto:tom@technomad.media?Subject=Job | from wommytilliams.com',false],
-    ['phone','tel:3128189011',false],
+    ['email','mailto:tom@technomad.media?Subject=Job | from wommytilliams.com',false,'paper-plane'],
+    ['phone','tel:3128189011',false,'phone'],
     ['facebook', 'froggie92',true],
     ['twitter', 'froggie92',true],
-    ['google+', 'https://plus.google.com/u/0/118102255716845472363/posts',false],
+    ['google+', 'https://plus.google.com/u/0/118102255716845472363/posts',false,'google-plus'],
     ['instagram', 'wommytilliams',true],
     ['github', 'wommy',true],
   ]
@@ -47,12 +47,18 @@
     github: 'wommy'
   }
 
-//- 
+//-
   TOOD
   if internal
     post='.html'
   else
     post='.com'
+
+- icons = ['paper-plane', 'phone', 'facebook', 'twitter', 'google-plus', 'instagram', 'github']
+
+mixin icon(icons)
+  each icon in icons
+    i.fa(class='fa-'+icon)
 
 mixin q--a(foo)
   -url='./'
@@ -63,12 +69,16 @@ mixin q--a(foo)
 //- mixin q--a__b(foo, href)
 //-   a(href=href)(target='_blank')= foo
 
-mixin q--a__c(title, href, ifLong)
-  -ifLong 
+mixin q--a__c(title, href, ifLong, iCp)
+  -iCp
+  -iC='fa fa-'
+  -ifLong
   -ext='//'+title+'.com/'
+  //- i( class= ifLong ? iC+title : iC+iCp )
   a(
-    href= ifLong ? ext+href : href   
+    href= ifLong ? ext+href : href
     target='_blank'
+    class= ifLong ? iC+title : iC+iCp
   )= title
 
 mixin nav__links(list)
@@ -81,8 +91,8 @@ mixin nav__links--social4(superArray)
     //- if (array[3] == 1) ? href=array[1]:href='//'+array[0]+'.com/'+array[1]
     //- -
     //-   ext = '//'+array[0]+'.com/'
-
-    +q--a__c(a[0],a[1],a[2])
+    //- +icon(icons[a])
+    +q--a__c(a[0],a[1],a[2],a[3])
     //- p #{array}
 
     //- if (array[2])
@@ -131,28 +141,32 @@ mixin nav__links--social4(superArray)
 //-   each a in superArray
 //-     //- - aLast = a[a.length - 1]
 //-     +q--a__b(a[0], a[1])
-      
+
 
 //- TODO GET TARGET BLANK TO WORK
 
-nav
+nav.nav-side
   +nav__links(pages)
   //- br
   //- +nav__links--social(contact)(target="_blank")
   br
+  span.underline contact
   +nav__links--social4(l)
-  br
-  p 
-  //- p #{l[2]}
-  //- p #{l[1]}
-  //- a(href='//#{l[2][0]}.com/#{l[2][1]}') #{l[2][0]}
-  //- +q--a('google', 2, 'www.google.com')
-  //- p 1 #{contactObj.email}
-  //- p 2 #{contactArr[0][0]} #{contactArr[1][0]}
-  //- p 3 #{socialObj.facebook}
-  //- p 4 #{socialArr}
-  //- p 5 #{socialArr[0]}
-  //- p 6 #{socialObj.github}
-  //- p 7 #{contactObj[1]}
-  //- p #{contactZ.facebook}
-  //- +q--a(foo, number)
+  //-
+    p #{l[2]}
+    p #{l[1]}
+    a(href='//#{l[2][0]}.com/#{l[2][1]}') #{l[2][0]}
+    +q--a('google', 2, 'www.google.com')
+    p 1 #{contactObj.email}
+    p 2 #{contactArr[0][0]} #{contactArr[1][0]}
+    p 3 #{socialObj.facebook}
+    p 4 #{socialArr}
+    p 5 #{socialArr[0]}
+    p 6 #{socialObj.github}
+    p 7 #{contactObj[1]}
+    p #{contactZ.facebook}
+    +q--a(foo, number)
+  //-
+    br
+    +icon(icons)
+

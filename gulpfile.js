@@ -8,7 +8,7 @@ var data = require('gulp-data');
 
 // rune this task by typing in  gulp jade  in CLI
 gulp.task('jade', function() {
-  return gulp.src('in/current/**/*.jade')
+  return gulp.src('in/**/*.jade')
     // .pipe(data(function(){
     //   return require('/config.json');
     // }))
@@ -32,16 +32,21 @@ gulp.task('jade-watch', ['jade'], reload);
 // gulp.task('md-watch', ['md'], reload);
 
 gulp.task('sass', function(){
-  return gulp.src('./in/current/assets/scss/*.scss')
+  return gulp.src('./in/assets/scss/*.scss')
     .pipe(sass())
     .pipe(gulp.dest('out/assets/css')) // tells gulp our output folder
     .pipe(reload({stream: true}));
 });
 
 gulp.task('serve', ['jade', 'sass'], function() {
-  browserSync({server: './out'});
+  browserSync({
+    server: './out',
+    port:process.env.PORT,
+    host:process.env.IP
+  });
+  // TODO cloud9 ? script
 
-  gulp.watch('./in/current/assets/scss/*.scss', ['sass']);
-  gulp.watch("./in/current/**/*.jade", ['jade-watch']);
+  gulp.watch('./in/assets/scss/*.scss', ['sass']);
+  gulp.watch("./in/**/*.jade", ['jade-watch']);
   // gulp.watch("./in/current/**/*.md", ['md-watch']);
 });

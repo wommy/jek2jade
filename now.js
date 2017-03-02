@@ -1,0 +1,3 @@
+function getDateTime() {
+    return Date();
+}

@@ -1,0 +1,31 @@
+// script alert( formattedDate() );
+script document.write( Date() );
+
+-
+  function formattedDate(date) {
+    var d = new Date(date || Date.now()),
+        month = '' + (d.getMonth() + 1),
+        day = '' + d.getDate(),
+        year = d.getFullYear();
+
+    if (month.length < 2) month = '0' + month;
+    if (day.length < 2) day = '0' + day;
+
+    return [year, month, day].join('/');
+  }
+
+// script formattedDate()
+
+//-
+  http://stackoverflow.com/questions/8040771/how-to-change-date-format-in-javascript
+  http://stackoverflow.com/questions/10211145/getting-current-date-and-time-in-javascript
+  http://stackoverflow.com/questions/4744299/how-to-get-datetime-in-javascript
+  _current datetime javascript
+  http://www.w3schools.com/js/js_function_definition.asp
+  http://www.w3schools.com/js/js_output.asp
+  http://www.w3schools.com/jsref/jsref_obj_date.asp
+  http://www.w3schools.com/js/js_dates.asp
+  http://www.w3schools.com/js/tryit.asp?filename=tryjs_date_toutcstring
+  http://www.w3schools.com/js/tryit.asp?filename=tryjs_date_todatestring
+  _javascript change date format
+

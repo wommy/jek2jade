@@ -1,0 +1,61 @@
+extends ./assets/jade/templates/default.jade
+
+block title
+  title tommy williams resume
+
+block content
+  mixin section(title)
+    div(id=title).card
+      h2.underline.indent.smallCaps= title
+      if block
+        block
+      else
+        p No content provided
+  .wrapperSub.flex.fD-c
+    h1 tommy williams resume
+    +section()
+      p portfolio: wommytilliams.com
+      p email: tom@technomad.media
+      p phone: 312 818 9011
+      p address: 2214 lloyd ave royal oak mi 48073
+      p 4yr goal: senior full-stack developer @ Media / eCommerce Agency
+      p hobbies: cycling, kungfu, dancing to techno
+      p professional social media:
+      p a(href='github.com/wommy')github
+      p a(href='plus.google.com/u/0/118102255716845472363/posts')google+
+    +section('education')
+      p depaul graduated spring 2015
+        span.block.indent bachelor of arts: psychology
+        span.block.indent minor: interactive social media
+        span.block.indent dean's list: 5 quarters
+      p columbia college ( 2 years )
+        span.block.indent film + music composition
+        span.block.indent honor roll: 2 semesters
+    +section('experience')
+      h3 original graphics printing
+      p contact: santiago avecado
+      p 4 month subcontract
+      p full-stack development
+      h3 solution people
+      p contact: gerald haman
+      p managed 30+ websites
+      p redesign/develop
+      p content creation/management
+      h3 freelance
+      p 11+ clients
+    +section('design - ui/ux')
+      p mockups / wireframes / site-mapping<br>- balsamiq axure sketch atomic
+      p adobe - illustrator / photoshop
+      p physical media - paper prototypes + human-computer interaction
+      p rapid prototyping - agile + scrum
+      p gui / db
+    +section('development')
+      p HTML5 CSS3 JavaScript RUBY PHP PYTHON
+      p - jade liquid haml handlebars mustache bootstrap
+      p - sass|scss less postcss rework
+      p - node babel - jquery react angular express
+      p npm gulp grunt browserify webpack bundler bower yeoman
+      p ajax json yaml md git ssh ssl ftp
+      p CMS / SSGs / eCommerce
+      p NoSQL MySQL PostGreSQL
+      p test creation, data collection, statistical analysis

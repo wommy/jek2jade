@@ -1,0 +1,156 @@
+extends ./assets/jade/templates/default.jade
+
+// - title = 'tommy williams resume'
+
+block title
+ title tommy williams resume
+
+block content
+  - section = ['contact','education','experience','expertise']
+  - sectionSub = ['design','development','database']
+  - card = ['contact','education','experience','expertise']
+  - cardv1 = ['portfolio: wommytilliams.com','email: tom@technomad.media','phone: 312 818 9011','address: 2214 lloyd ave royal oak mi 48073','4yr goal: senior full-stack developer @ Media / eCommerce Agency','hobbies: cycling, kungfu, dancing to techno']
+  -
+    cardv2c1 = ['portfolio','email','phone','address','4yr goal','hobbies']
+    aT = cardv2c1
+  -
+    cardv2c2 = [
+      'wommytilliams.com',
+      'tom@technomad.media',
+      '312 818 9011',
+      '2214 lloyd ave royal oak mi 48073',
+      'senior full-stack developer @ Media / eCommerce Agency',
+      'cycling, kungfu, dancing to techno'
+    ],
+    aC = cardv2c2
+  h1 tommy williams resume
+  //-
+    nav.nav-sub
+       each item in section
+         a(href='./resume.html#'+item)= item
+
+  //-
+    each item in section
+       div(id=item)
+         h2= item
+         block= item
+
+  mixin section(title)
+    div(id=title).card
+      h2.underline.indent.smallCaps= title
+      if block
+        block
+      else
+        p No content provided
+  mixin card(title)
+    .card.flex.fD-c.f_Ai-c
+      h2.underline.indent.smallCaps= title
+      if block
+        block
+      else
+        p No content provided
+  mixin categoryv1(icons)
+    each icon in icons
+      span.block= icon
+      //- i.fa(class='fa-'+icon)
+
+  mixin categoryv2(title, content)
+    - i = 0
+    - j = 2
+    - cs = ': '
+    while i < title.length
+      .card-row.f_jc-sa
+        span.card-row-title.f_As-e= aT[i]+cs
+        span.card-row-content= aC[i]
+      - i ++
+      //-
+        .cardRow
+        tag+
+      //- +': '+content[i]
+      //- i.fa(class='fa-'+icon)
+
+  .wrapperSub
+    .column
+      +card(card[0])
+        +categoryv1(cardv1)
+        br
+        +categoryv2(aT, aC)
+        //-
+          span.block portfolio: wommytilliams.com
+          span.block email: tom@technomad.media
+          span.block phone: 312 818 9011
+          span.block address: 2214 lloyd ave
+          span.block.indent2 royal oak mi 48073
+          span.block 4yr goal: senior full-stack developer
+          span.block.indent2 @ Media / eCommerce Agency
+          span.block hobbies: cycling, kungfu, dancing to techno
+      +section('education')
+        p depaul graduated spring 2015
+          span.block.indent bachelor of arts: psychology
+          span.block.indent minor: interactive social media
+          span.block.indent dean's list: 5 quarters
+        p columbia college ( 2 years )
+          span.block.indent film + music composition
+          span.block.indent honor roll: 2 semesters
+      +section('experience')
+        h3 original graphics printing
+        p contact: santiago avecado
+        p 4 month subcontracted full-stack development
+        h3 solution people
+        p contact: gerald haman
+        p managed 30+ websites
+        p re[design/develop]
+        p content[creation/management]
+        h3 freelance
+        p 11+ clients
+    .column
+      // +section('expertise')
+      +section('design - ui/ux')
+        // h3 ui/ux - minor
+        p mockups / wireframes / site-mapping<br>- balsamiq axure sketch atomic
+        p adobe - illustrator / photoshop
+        p physical media - paper prototypes + human-computer interaction
+        p rapid prototyping - agile + scrum
+        p gui / db
+      +section('development')
+        p HTML5 CSS3 JavaScript RUBY PHP PYTHON
+        p - jade liquid haml handlebars mustache bootstrap
+        p - sass|scss less postcss rework
+        p - node babel - jquery react angular express
+        p npm gulp grunt browserify webpack bundler bower yeoman
+        p ajax json yaml md git ssh ssl ftp
+        p CMS / SSGs / eCommerce
+        p NoSQL MySQL PostGreSQL
+        p test creation, data collection, statistical analysis
+      //-
+        +section('development')
+          p HTML5 - jade liquid haml handlebars mustache bootstrap
+          p CSS3 - sass|scss less postcss rework
+          p JAVASCRIPT - node/io babel - express - jquery / angular / react
+          p RUBY( on RAILS) PHP PYTHON
+          p build tools - npm gulp grunt browserify webpack bundler bower yeoman
+          p ajax json yaml markdown commonjs amd
+          p git ssh ssl ftp
+          p CMS / SSGs (static site generators) / ecommerce
+          p psych - test creation, data collection, statistical analysis
+          p database - NoSQL SQL PostGres
+      //- +section('database')
+//-
+  navSub_resume = ['contact','experience','education','expertise','hobbies']
+  navSub_resume_subExpertise = ['design','develop','deploy','data','other']
+//-
+  mixin q--a(foo)
+    -url='./'
+    if foo !== 'home'
+      -url += foo + '.html'
+    a(href=url)= foo
+
+  //-
+    p.rss-subscribe - subscribe
+      a(href='{{ "/feed.xml" | prepend: site.baseurl }}') via RSS
+    ul.post-list
+      {% for post in site.posts %}
+      li
+        span.post-meta {{ post.date | date: "%b %-d, %Y" }}
+        h2: a.post-link(href='{{ post.url | prepend: site.baseurl }}') {{ post.title }}
+      {% endfor %}
