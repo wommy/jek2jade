@@ -1,6 +1,6 @@
 {
   "name": "jek2jade",
-  "version": "0.6.1a",
+  "version": "0.6.1b",
   "description": "converting jekyll files to jade",
   "main": "index.js",
   "scripts": {
